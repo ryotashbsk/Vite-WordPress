@@ -1,0 +1,28 @@
+@use '../import' as *;
+
+.footer {
+  background-color: #eee;
+  padding: 1em;
+}
+
+.footer-nav {
+  display: flex;
+  justify-content: center;
+}
+
+.footer-nav-item {
+  color: #000;
+  text-transform: uppercase;
+  margin: 0 1em;
+}
+
+.footer-copy {
+  margin-top: 1em;
+  text-align: center;
+}
+
+@include mq('max', 'mobile') {
+}
+
+@include mq('min', 'mobile') {
+}

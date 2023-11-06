@@ -1,0 +1,13 @@
+@use '../import' as *;
+
+.pageHeader {
+  text-transform: uppercase;
+  text-align: center;
+  padding: 4em 1em;
+}
+
+@include mq('max', 'mobile') {
+}
+
+@include mq('min', 'mobile') {
+}

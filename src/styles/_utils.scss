@@ -1,0 +1,87 @@
+@use './import' as *;
+
+// inner
+.inner {
+  position: relative;
+  z-index: 1;
+  max-width: 988px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+// br
+.br-pc {
+  display: none !important;
+
+  @include mq('min', 'mobile') {
+    display: block !important;
+  }
+}
+
+.br-sp {
+  display: block !important;
+
+  @include mq('min', 'mobile') {
+    display: none !important;
+  }
+}
+
+// visibile
+.visible-pc {
+  display: none !important;
+
+  @include mq('min', 'mobile') {
+    display: block !important;
+  }
+}
+
+.visible-sp {
+  display: block !important;
+
+  @include mq('min', 'mobile') {
+    display: none !important;
+  }
+}
+
+// heading
+
+.heading {
+  font-weight: bold;
+  text-align: center;
+  margin-top: rem(12);
+
+  + * {
+    margin-top: rem(50);
+  }
+
+  @include mq('max', 'mobile') {
+    font-size: vw_sp(34);
+  }
+
+  @include mq('min', 'mobile') {
+    font-size: 40px;
+  }
+}
+
+// button
+.button {
+  display: block;
+}
+
+// inside-blank
+.inside-blank {
+  @include mq('max', 'mobile') {
+    padding-left: vw_sp(14);
+    padding-right: vw_sp(14);
+  }
+
+  @include mq('min', 'mobile') {
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+}
+
+// bg
+.bg-white {
+  background-color: #fff;
+}

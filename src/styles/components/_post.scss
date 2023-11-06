@@ -1,0 +1,12 @@
+@use '../import' as *;
+
+.post {
+  text-align: center;
+  padding: 4em 1em;
+}
+
+@include mq('max', 'mobile') {
+}
+
+@include mq('min', 'mobile') {
+}

@@ -1,0 +1,7 @@
+@use '../import' as *;
+
+@include mq('max', 'mobile') {
+}
+
+@include mq('min', 'mobile') {
+}

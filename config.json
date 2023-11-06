@@ -1,0 +1,6 @@
+{
+  "resourcePath": "src",
+  "pathPrefix": "/",
+  "entryPoint": "src/scripts/main.js",
+  "outputPath": "dist/wp-content/themes/my-theme/assets/build/"
+}

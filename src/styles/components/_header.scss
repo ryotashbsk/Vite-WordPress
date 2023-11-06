@@ -1,0 +1,23 @@
+@use '../import' as *;
+
+.header {
+  background-color: #000;
+}
+
+.header-nav {
+  display: flex;
+  justify-content: center;
+}
+
+.header-nav-item {
+  color: #fff;
+  text-transform: uppercase;
+  margin: 0 1em;
+  padding: 1em 0;
+}
+
+@include mq('max', 'mobile') {
+}
+
+@include mq('min', 'mobile') {
+}
