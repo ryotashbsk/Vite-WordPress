@@ -1,4 +1,4 @@
-# Vite+WordPress
+# Vite-WordPress
 
 #### Development Commands
 
