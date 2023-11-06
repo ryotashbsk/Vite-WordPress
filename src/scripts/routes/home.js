@@ -6,8 +6,8 @@ import { HomeUI } from '@/ui/HomeUI';
 
 export default class Home {
   constructor() {
-    this._init();
+    this.#init();
   }
 
-  _init() {}
+  #init() {}
 }

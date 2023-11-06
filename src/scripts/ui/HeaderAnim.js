@@ -6,8 +6,8 @@ import { ScrollUtil } from '@/utils/ScrollUtil';
 
 export class HeaderAnim {
   constructor() {
-    this._init();
+    this.#init();
   }
 
-  _init() {}
+  #init() {}
 }

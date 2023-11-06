@@ -6,14 +6,15 @@ import { CommonUtil } from '@/utils/CommonUtil';
 import { ScrollUtil } from '@/utils/ScrollUtil';
 
 export default class Core {
+  #dataRoute = document.querySelector('.app').dataset.route;
+
   constructor() {
-    this._dataRoute = document.querySelector('.app').dataset.route;
     CommonUtil.reloadAtResized();
-    this._init();
+    this.#init();
   }
 
-  async _init() {
-    this._routeInit();
+  async #init() {
+    this.#routeInit();
   }
 
   /*
@@ -21,10 +22,10 @@ export default class Core {
    * src/scripts/routes/xx.jsのファイルが一致したら実行
    */
 
-  _routeInit() {
-    console.log(this._dataRoute);
-    if (this._dataRoute && routes.get(this._dataRoute)) {
-      const App = routes.get(this._dataRoute);
+  #routeInit() {
+    console.log(this.#dataRoute);
+    if (this.#dataRoute && routes.get(this.#dataRoute)) {
+      const App = routes.get(this.#dataRoute);
       const app = new App();
     }
   }
