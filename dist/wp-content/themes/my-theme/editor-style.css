@@ -1,0 +1,72 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body.mceContentBody {
+  font-size: 14px;
+  line-height: 1.86;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  word-break: break-all;
+  line-break: normal;
+  text-underline-offset: 0.25em;
+  letter-spacing: 0.05rem;
+  word-break: normal;
+  text-size-adjust: 100%;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-feature-settings: 'palt' 1;
+  -ms-overflow-style: none;
+  font-feature-settings: 'palt' 1;
+  -ms-overflow-style: none;
+}
+
+body.mceContentBody * + h1,
+body.mceContentBody * + h2,
+body.mceContentBody * + h3,
+body.mceContentBody * + h4,
+body.mceContentBody * + h5 {
+  margin-top: 2rem;
+}
+
+body.mceContentBody p + p {
+  margin-top: 1rem;
+}
+
+body.mceContentBody a {
+  color: #000;
+  text-decoration: underline;
+}
+
+body.mceContentBody .alignleft {
+  float: none;
+}
+
+body.mceContentBody .ttl {
+  font-size: 1.3rem;
+  font-weight: bold;
+}
+
+body.mceContentBody .strong {
+  font-weight: bold;
+}
+
+body.mceContentBody .red {
+  color: #e60012;
+  font-weight: bold;
+}
+
+body.mceContentBody h2,
+body.mceContentBody .text-large {
+  font-size: 1.5rem;
+}
+
+body.mceContentBody img {
+  max-width: 560px;
+}
+
+ul,
+ol {
+  margin-left: 1.5em;
+  margin-top: 1.5em;
+}

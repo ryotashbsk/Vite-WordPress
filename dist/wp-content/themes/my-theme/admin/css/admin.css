@@ -1,0 +1,187 @@
+#wp-admin-bar-archive,
+#se-top-global-notice,
+#updraft-dashnotice,
+#wp-admin-bar-root-default #wp-admin-bar-updates,
+#wp-admin-bar-root-default #wp-admin-bar-view,
+#wp-admin-bar-root-default #wp-admin-bar-new_draft,
+#wp-admin-bar-root-default #wp-admin-bar-updraft_admin_node,
+#screen-meta-links #contextual-help-link-wrap,
+#wp-admin-bar-user-actions #wp-admin-bar-edit-profile,
+#wp-admin-bar-user-actions #wp-admin-bar-user-info,
+#adminmenu #menu-posts-teacher,
+#adminmenu #menu-posts-reference,
+.post-type-post #poststuff #titlewrap,
+#newpost_tag_parent,
+.media-attachments-filter-heading,
+.exactmetrics-widget-report-element.exactmetrics-widget-report-toppages,
+.exactmetrics-widget-report-element.exactmetrics-widget-report-newvsreturn,
+.exactmetrics-widget-report-element.exactmetrics-widget-report-devices,
+.acf-relationship .list .acf-rel-item br,
+#category-tabs,
+#post_tag-tabs,
+.mce-menubar,
+.row-title br,
+.mce-btn[aria-label='番号なしリスト (⌃⌥U)'],
+.mce-btn[aria-label='番号付きリスト (⌃⌥O)'],
+.mce-btn[aria-label='引用 (⌃⌥Q)'],
+/* .mce-btn[aria-label='左寄せ (⌃⌥L)'],
+.mce-btn[aria-label='右寄せ (⌃⌥R)'], */
+/* .mce-btn[aria-label='中央揃え (⌃⌥C)'], */
+.mce-btn[aria-label='「続きを読む」タグを挿入 (⌃⌥T)'],
+.mce-btn[aria-label='フルスクリーン'],
+.mce-btn[aria-label='横ライン'],
+.mce-btn[aria-label='テキストとしてペースト'],
+.mce-btn[aria-label='特殊文字'],
+.mce-btn[aria-label='インデントを減らす'],
+.mce-btn[aria-label='インデントを増やす'],
+.mce-btn[aria-label='キーボードショートカット (⌃⌥H)'],
+.mce-btn[aria-label='イタリック (⌘I)'],
+.mce-toolbar .mce-btn-group .mce-btn.mce-listbox,
+.handle-order-lower,
+.handle-order-higher,
+input[value='レビュー待ちとして送信'],
+.taxonomy-post_tag .form-field.term-parent-wrap {
+  display: none !important;
+}
+
+#category-adder,
+#post_tag-adder {
+  padding-left: 15px;
+}
+
+#edit-slug-box {
+  padding-left: 0;
+}
+
+#edit-slug-box strong {
+  display: block;
+  color: #3c434a;
+}
+
+.acf-label {
+  margin-bottom: 0 !important;
+}
+
+.acf-field .acf-input-wrap {
+  overflow: inherit;
+}
+
+.acf-field-repeater > .acf-label {
+  margin-bottom: 10px !important;
+}
+
+.acf-field .acf-label,
+.acf-table > thead > tr > th,
+.acf-fields.-left > .acf-field > .acf-label {
+  font-size: 13px;
+  font-weight: bold;
+}
+
+.acf-field p.description {
+  font-weight: normal;
+}
+
+.acf-image-uploader {
+  max-width: 300px;
+}
+
+.acf-field-oembed {
+  max-width: 424px;
+}
+
+.acf-image-uploader .image-wrap img {
+  border: 1px solid #ddd;
+}
+
+.acf-field-oembed iframe {
+  height: 200px;
+}
+
+.text_h_s textarea,
+.text_h_s iframe {
+  height: 100px !important;
+}
+
+.text_h_m textarea,
+.text_h_m iframe {
+  height: 200px !important;
+}
+
+.text_h_l textarea,
+.text_h_l iframe {
+  min-height: 500px !important;
+}
+
+.wp-editor-container textarea.wp-editor-area {
+  padding: 1em;
+}
+
+.categorydiv div.tabs-panel {
+  max-height: 300px;
+}
+
+.acf-field-message {
+  border: 1px solid #ddd !important;
+  margin: 0 12px !important;
+  padding: 1.5rem !important;
+  background: #fafafa !important;
+}
+
+.column-thumbnail {
+  width: 100px;
+}
+
+.column-thumbnail:before {
+  display: none !important;
+}
+
+.column-thumbnail img {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+}
+
+.column-member_img {
+  width: 60px;
+}
+
+.column-thumb {
+  width: 80px;
+}
+
+.column-member_img:before,
+.column-thumb:before {
+  display: none !important;
+}
+
+.column-member_img img,
+.column-thumb img {
+  max-width: 100%;
+  height: auto;
+}
+
+.post-type-member .acf-field[data-name='img'] img {
+  width: 200px;
+}
+
+.manualImg {
+  max-width: 1000px;
+  width: 100%;
+  border: 1px solid #ddd;
+}
+
+.text-warn {
+  color: #ff0000;
+}
+
+#postimagediv h2 {
+  display: block;
+}
+
+#postimagediv h2 span {
+  display: block;
+  color: #646970;
+  font-size: 12px;
+  font-weight: normal;
+  margin-left: -0.5em;
+}
