@@ -14,7 +14,8 @@
 
 #### URLs
 
-| URL                   | Description                                  |
-| --------------------- | -------------------------------------------- |
-| http://localhost      | Local server with the document root at /dist |
-| http://localhost:8888 | Local phpMyAdmin                             |
+| URL                           | Description                                  | ID/PW            |
+| ----------------------------- | -------------------------------------------- | ---------------- |
+| http://localhost              | Local server with the document root at /dist |                  |
+| http://localhost/wp-login.php | ローカル WordPress 管理画面                  | admin / password |
+| http://localhost:8888         | Local phpMyAdmin                             |                  |
