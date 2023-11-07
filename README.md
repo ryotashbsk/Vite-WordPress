@@ -10,7 +10,8 @@
 | **`docker:init`**  | Run this command when Docker is initially started |
 | **`docker:start`** | Start Docker                                      |
 | **`docker:stop`**  | Stop Docker                                       |
-| **`export-db`**    | Export the database named 'localdb'               |
+| **`wpdb-export`**  | Export the database named 'localdb'               |
+| **`wpdb-import`**  | Import the database named 'localdb'               |
 
 #### Install WordPress (First-time Setup)
 
