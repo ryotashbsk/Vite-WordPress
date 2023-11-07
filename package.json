@@ -10,7 +10,7 @@
     "docker:init": "docker compose up -d --build",
     "docker:start": "docker compose up -d",
     "docker:stop": "docker stop $(docker ps -q) ",
-    "export-db": "bash shell/export-db.sh"
+    "db-export": "bash shell/db-export.sh"
   },
   "devDependencies": {
     "concurrently": "^8.2.2",

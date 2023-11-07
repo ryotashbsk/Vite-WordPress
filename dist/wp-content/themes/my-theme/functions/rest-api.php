@@ -9,7 +9,7 @@ add_filter('acf/settings/rest_api_format', function () {
  */
 function disable_rest_api_default_query()
 {
-    if (preg_match('/wp\/v2\/users/i', $_SERVER['REQUEST_URI']) || preg_match('/wp\/v2\/users/i', $_SERVER['QUERY_STRING'])) {
+    if (isset($_SERVER['REQUEST_URI']) && (preg_match('/wp\/v2\/users/i', $_SERVER['REQUEST_URI']) || isset($_SERVER['QUERY_STRING']) && preg_match('/wp\/v2\/users/i', $_SERVER['QUERY_STRING']))) {
         wp_safe_redirect(home_url('/'), 301);
         exit;
     }
