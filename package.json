@@ -10,7 +10,8 @@
     "docker:init": "docker compose up -d --build",
     "docker:start": "docker compose up -d",
     "docker:stop": "docker stop $(docker ps -q) ",
-    "db-export": "bash shell/db-export.sh"
+    "wpdb-export": "bash shell/wpdb-export.sh",
+    "wpdb-import": "bash shell/wpdb-import.sh"
   },
   "devDependencies": {
     "concurrently": "^8.2.2",
