@@ -23,7 +23,7 @@ services:
   mysql:
     container_name: vite-wp-db
     platform: linux/x86_64
-    image: mysql:latest
+    image: mariadb:latest
     volumes:
       - mysql:/var/lib/mysql
       - ./docker/mysql:/docker-entrypoint-initdb.d
