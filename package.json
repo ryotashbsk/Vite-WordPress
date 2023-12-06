@@ -31,7 +31,7 @@
     "terser": "^5.24.0",
     "vite": "4.5.1",
     "vite-plugin-live-reload": "^3.0.2",
-    "vite-plugin-sass-glob-import": "^2.0.0"
+    "vite-plugin-sass-glob-import": "^3.0.2"
   },
   "dependencies": {
     "@barba/core": "^2.9.7",
