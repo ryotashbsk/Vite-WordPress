@@ -145,7 +145,7 @@ add_filter('document_title_separator', function () {
 
 function vite_manifest()
 {
-    $json = get_theme_file_path('/assets/build/manifest.json');
+    $json = get_theme_file_path('/assets/build/.vite/manifest.json');
     if(file_exists($json)) {
         return json_decode(
             file_get_contents($json),
