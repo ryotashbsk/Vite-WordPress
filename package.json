@@ -36,7 +36,7 @@
   "dependencies": {
     "@barba/core": "^2.9.7",
     "@barba/prefetch": "^2.1.10",
-    "gsap": "^3.12.3",
+    "gsap": "^3.12.5",
     "ua-parser-js": "^1.0.37"
   }
 }
