@@ -65,14 +65,14 @@ devDependencies:
     specifier: ^5.25.0
     version: 5.25.0
   vite:
-    specifier: 5.0.12
-    version: 5.0.12(sass@1.69.5)(terser@5.25.0)
+    specifier: 5.1.1
+    version: 5.1.1(sass@1.69.5)(terser@5.25.0)
   vite-plugin-live-reload:
     specifier: ^3.0.3
-    version: 3.0.3(vite@5.0.12)
+    version: 3.0.3(vite@5.1.1)
   vite-plugin-sass-glob-import:
     specifier: ^3.0.2
-    version: 3.0.2(vite@5.0.12)
+    version: 3.0.2(vite@5.1.1)
 
 packages:
 
@@ -2122,6 +2122,15 @@ packages:
       source-map-js: 1.0.2
     dev: true
 
+  /postcss@8.4.35:
+    resolution: {integrity: sha512-u5U8qYpBCpN13BsiEB0CbR1Hhh4Gc0zLFuedrHJKMctHCHAGrMdG0PRM/KErzAL3CU6/eckEtmHNB3x6e3c0vA==}
+    engines: {node: ^10 || ^12 || >=14}
+    dependencies:
+      nanoid: 3.3.7
+      picocolors: 1.0.0
+      source-map-js: 1.0.2
+    dev: true
+
   /prepend-http@1.0.4:
     resolution: {integrity: sha512-PhmXi5XmoyKw1Un4E+opM2KcsJInDvKyuOumcjjw3waw86ZNjHwVUOOWLc4bCzLdcKNaWBH9e99sbWzDQsVaYg==}
     engines: {node: '>=0.10.0'}
@@ -2669,17 +2678,17 @@ packages:
     hasBin: true
     dev: true
 
-  /vite-plugin-live-reload@3.0.3(vite@5.0.12):
+  /vite-plugin-live-reload@3.0.3(vite@5.1.1):
     resolution: {integrity: sha512-ce1ygNPmfVdiO6SyjpephroZiK+X5+BFetkceD/FFOYZEPoVSydJRfKT2JPaL4/D3C3NwqJvtPjnla1GSa264A==}
     peerDependencies:
       vite: ^4.0.0 || ^5.0.0
     dependencies:
       chokidar: 3.5.3
       picocolors: 1.0.0
-      vite: 5.0.12(sass@1.69.5)(terser@5.25.0)
+      vite: 5.1.1(sass@1.69.5)(terser@5.25.0)
     dev: true
 
-  /vite-plugin-sass-glob-import@3.0.2(vite@5.0.12):
+  /vite-plugin-sass-glob-import@3.0.2(vite@5.1.1):
     resolution: {integrity: sha512-Tu6M6Fn4pFp1Gsvt+uOKAmPQyspNJSAWKV8GepHGR9Rmx4wujfS0wPjfmVk7QGqD+bSzr+P7L5VGGw9nPgiaMA==}
     peerDependencies:
       vite: ^3.0.0 || ^4.0.0 || ^5.0.0
@@ -2687,11 +2696,11 @@ packages:
       ansi-colors: 4.1.3
       glob: 7.2.3
       minimatch: 3.1.2
-      vite: 5.0.12(sass@1.69.5)(terser@5.25.0)
+      vite: 5.1.1(sass@1.69.5)(terser@5.25.0)
     dev: true
 
-  /vite@5.0.12(sass@1.69.5)(terser@5.25.0):
-    resolution: {integrity: sha512-4hsnEkG3q0N4Tzf1+t6NdN9dg/L3BM+q8SWgbSPnJvrgH2kgdyzfVJwbR1ic69/4uMJJ/3dqDZZE5/WwqW8U1w==}
+  /vite@5.1.1(sass@1.69.5)(terser@5.25.0):
+    resolution: {integrity: sha512-wclpAgY3F1tR7t9LL5CcHC41YPkQIpKUGeIuT8MdNwNZr6OqOTLs7JX5vIHAtzqLWXts0T+GDrh9pN2arneKqg==}
     engines: {node: ^18.0.0 || >=20.0.0}
     hasBin: true
     peerDependencies:
@@ -2719,7 +2728,7 @@ packages:
         optional: true
     dependencies:
       esbuild: 0.19.8
-      postcss: 8.4.32
+      postcss: 8.4.35
       rollup: 4.6.1
       sass: 1.69.5
       terser: 5.25.0
