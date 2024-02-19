@@ -23,7 +23,7 @@
     "imagemin-mozjpeg": "^10.0.0",
     "imagemin-pngquant": "^9.0.2",
     "imagemin-svgo": "^10.0.1",
-    "postcss": "^8.4.32",
+    "postcss": "^8.4.35",
     "postcss-sort-media-queries": "^5.2.0",
     "prettier": "^3.2.5",
     "rimraf": "5.0.5",
