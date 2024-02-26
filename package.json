@@ -28,7 +28,7 @@
     "prettier": "^3.2.5",
     "rimraf": "5.0.5",
     "sass": "^1.70.0",
-    "terser": "^5.27.0",
+    "terser": "^5.28.1",
     "vite": "5.1.1",
     "vite-plugin-live-reload": "^3.0.3",
     "vite-plugin-sass-glob-import": "^3.0.2"
