@@ -65,14 +65,14 @@ devDependencies:
     specifier: ^5.27.0
     version: 5.27.0
   vite:
-    specifier: 5.1.6
-    version: 5.1.6(sass@1.71.1)(terser@5.27.0)
+    specifier: 5.1.7
+    version: 5.1.7(sass@1.71.1)(terser@5.27.0)
   vite-plugin-live-reload:
     specifier: ^3.0.3
-    version: 3.0.3(vite@5.1.6)
+    version: 3.0.3(vite@5.1.7)
   vite-plugin-sass-glob-import:
     specifier: ^3.0.2
-    version: 3.0.2(vite@5.1.6)
+    version: 3.0.2(vite@5.1.7)
 
 packages:
 
@@ -2673,17 +2673,17 @@ packages:
     hasBin: true
     dev: true
 
-  /vite-plugin-live-reload@3.0.3(vite@5.1.6):
+  /vite-plugin-live-reload@3.0.3(vite@5.1.7):
     resolution: {integrity: sha512-ce1ygNPmfVdiO6SyjpephroZiK+X5+BFetkceD/FFOYZEPoVSydJRfKT2JPaL4/D3C3NwqJvtPjnla1GSa264A==}
     peerDependencies:
       vite: ^4.0.0 || ^5.0.0
     dependencies:
       chokidar: 3.5.3
       picocolors: 1.0.0
-      vite: 5.1.6(sass@1.71.1)(terser@5.27.0)
+      vite: 5.1.7(sass@1.71.1)(terser@5.27.0)
     dev: true
 
-  /vite-plugin-sass-glob-import@3.0.2(vite@5.1.6):
+  /vite-plugin-sass-glob-import@3.0.2(vite@5.1.7):
     resolution: {integrity: sha512-Tu6M6Fn4pFp1Gsvt+uOKAmPQyspNJSAWKV8GepHGR9Rmx4wujfS0wPjfmVk7QGqD+bSzr+P7L5VGGw9nPgiaMA==}
     peerDependencies:
       vite: ^3.0.0 || ^4.0.0 || ^5.0.0
@@ -2691,11 +2691,11 @@ packages:
       ansi-colors: 4.1.3
       glob: 7.2.3
       minimatch: 3.1.2
-      vite: 5.1.6(sass@1.71.1)(terser@5.27.0)
+      vite: 5.1.7(sass@1.71.1)(terser@5.27.0)
     dev: true
 
-  /vite@5.1.6(sass@1.71.1)(terser@5.27.0):
-    resolution: {integrity: sha512-yYIAZs9nVfRJ/AiOLCA91zzhjsHUgMjB+EigzFb6W2XTLO8JixBCKCjvhKZaye+NKYHCrkv3Oh50dH9EdLU2RA==}
+  /vite@5.1.7(sass@1.71.1)(terser@5.27.0):
+    resolution: {integrity: sha512-sgnEEFTZYMui/sTlH1/XEnVNHMujOahPLGMxn1+5sIT45Xjng1Ec1K78jRP15dSmVgg5WBin9yO81j3o9OxofA==}
     engines: {node: ^18.0.0 || >=20.0.0}
     hasBin: true
     peerDependencies:
