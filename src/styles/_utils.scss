@@ -1,6 +1,5 @@
 @use './import' as *;
 
-// inner
 .inner {
   position: relative;
   z-index: 1;
@@ -9,41 +8,29 @@
   margin-right: auto;
 }
 
-// br
 .br-pc {
-  display: none !important;
-
-  @include mq('min', 'mobile') {
-    display: block !important;
+  @include mq('max', 'mobile') {
+    display: none;
   }
 }
 
 .br-sp {
-  display: block !important;
-
   @include mq('min', 'mobile') {
-    display: none !important;
+    display: none;
   }
 }
 
-// visibile
 .visible-pc {
-  display: none !important;
-
-  @include mq('min', 'mobile') {
-    display: block !important;
+  @include mq('max', 'mobile') {
+    display: none;
   }
 }
 
 .visible-sp {
-  display: block !important;
-
   @include mq('min', 'mobile') {
-    display: none !important;
+    display: none;
   }
 }
-
-// heading
 
 .heading {
   font-weight: bold;
@@ -63,12 +50,10 @@
   }
 }
 
-// button
 .button {
   display: block;
 }
 
-// inside-blank
 .inside-blank {
   @include mq('max', 'mobile') {
     padding-left: vw_sp(14);
@@ -81,7 +66,6 @@
   }
 }
 
-// bg
 .bg-white {
   background-color: #fff;
 }
