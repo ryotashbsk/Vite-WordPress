@@ -70,8 +70,7 @@ add_action('wp_head', function () {
     ['<meta property="og:description" content="%s">', esc_attr($description)],
     ['<meta property="og:site_name" content="%s">', esc_attr($site_name)],
     ['<meta property="og:locale" content="%s">', 'ja_JP'],
-  ]
-    as list($format, $value)) {
+  ] as list($format, $value)) {
         echo sprintf($format, $value) . "\n";
     }
 
@@ -115,7 +114,7 @@ add_action('wp_head', function () {
     } else {
         echo sprintf(
             '<script type="module" src="%s"></script>',
-            'http://localhost:3000/src/scripts/main.js'
+            'http://localhost:5173/src/scripts/main.js'
         ) . "\n";
     }
 });
@@ -131,7 +130,7 @@ add_filter('document_title_parts', function ($title) {
 add_filter('document_title_separator', function () {
     global $post;
     
-    if($post) {
+    if ($post) {
         $post_type = $post->post_type;
 
         if (is_singular($post_type) && !is_page()) {
@@ -146,7 +145,7 @@ add_filter('document_title_separator', function () {
 function vite_manifest()
 {
     $json = get_theme_file_path('/assets/build/.vite/manifest.json');
-    if(file_exists($json)) {
+    if (file_exists($json)) {
         return json_decode(
             file_get_contents($json),
             true

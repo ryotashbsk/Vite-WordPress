@@ -114,50 +114,19 @@ add_action('pre_get_posts', function ($query) {
 });
 
 
-
-/**
- * Fix output duotone svg filters in footer
- *
- * @link https://github.com/WordPress/gutenberg/issues/38299
- * @link https://core.trac.wordpress.org/ticket/54941
- *
- * @return void
- */
-function fix_output_duotone_svg()
-{
-    $filters = $GLOBALS['wp_filter']['wp_footer'][10];
-    if (empty($filters)) {
-        return;
-    }
-
-    foreach ($filters as $callback) {
-        if ($callback['function'] instanceof \Closure) {
-            $instance  = new \ReflectionFunction($callback['function']);
-            $variables = $instance->getStaticVariables();
-            if (! empty($variables['svg']) && strpos($variables['svg'], 'feColorMatrix')) {
-                remove_action('wp_footer', $callback['function'], 10);
-            }
-        }
-    }
-}
-add_action('wp_footer', 'fix_output_duotone_svg', 0);
-
-
 /**
  * wp_ksesで任意のタグを許可
  */
 add_filter('wp_kses_allowed_html', function ($tags, $context) {
-    if ('news' === $context) {
-        $tags['iframe'] = [
-          'src'             => true,
-          'height'          => true,
-          'width'           => true,
-          'frameborder'     => true,
-          'allowfullscreen' => true,
-          'style'           => true,
-          'loading'         => true,
-          'referrerpolicy'  => true
-        ];
-    }
+    $tags['iframe'] = [
+      'src'             => true,
+      'height'          => true,
+      'width'           => true,
+      'frameborder'     => true,
+      'allowfullscreen' => true,
+      'style'           => true,
+      'loading'         => true,
+      'referrerpolicy'  => true
+    ];
     return $tags;
 }, 10, 2);

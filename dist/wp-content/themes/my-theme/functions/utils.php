@@ -30,19 +30,23 @@ function is_parent_slug($parent_slug)
 function data_route()
 {
     $data_route = '';
-    $data_type = '';
-    $data_id = '';
-  
     global $post;
-  
+    $page_template = get_page_template_slug($post->ID);
+    
     if (is_front_page()) {
         $data_route = 'home';
     } elseif (is_page()) {
         $data_route = $post->post_name;
-    } elseif (is_post_type_archive(get_query_var('post_type'))) {
-        $data_route = get_query_var('post_type') . '-index';
-    } elseif (is_singular($post->post_type)) {
-        $data_route = $post->post_type . '-detail';
+    } elseif (is_archive()) {
+        $data_route = 'archive';
+    } elseif (is_single()) {
+        $data_route = 'single';
+    } elseif (is_search()) {
+        $data_route = 'search';
+    } elseif (is_404()) {
+        $data_route = 'notfound';
+    } else {
+        $data_route = '';
     }
   
     echo esc_attr($data_route);

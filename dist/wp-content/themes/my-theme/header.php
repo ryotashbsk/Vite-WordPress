@@ -1,7 +1,6 @@
-<!DOCTYPE html>
-<?php if (!DEBUG) {
+<?php if (!COMPRESS_HTML) {
     ob_start('compress_output');
-} ?>
+} ?><!DOCTYPE html>
 <html <?php language_attributes(); ?> data-route="<?php data_route(); ?>">
 <head>
 
