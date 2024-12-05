@@ -17,7 +17,8 @@
     "docker:delete": "docker compose down -v",
     "shell:setup-wp": "docker exec -it vite-wordpress-web /bin/bash -c \"/tmp/setup-wp.sh\"",
     "shell:export-wp-db": "bash shell/export-wp-db.sh",
-    "shell:import-wp-db": "bash shell/import-wp-db.sh"
+    "shell:import-wp-db": "bash shell/import-wp-db.sh",
+    "zip-theme": "cd dist/wp-content/themes/my-theme && zip -r ../../../../my-theme.zip ./*"
   },
   "devDependencies": {
     "autoprefixer": "10.4.20",
