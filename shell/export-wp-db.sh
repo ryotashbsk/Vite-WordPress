@@ -1,7 +1,7 @@
 #!/bin/bash
 
 folder_path="./docker/mysql"
-container_name="vite-wp-db"
+container_name="vite-wordpress-db"
 docker_command="docker exec -i $container_name sh -c"
 dump_command="mariadb-dump --default-character-set=binary localdb -u root -proot"
 output_file="./docker/mysql/initdb.sql"

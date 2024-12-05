@@ -58,13 +58,10 @@ add_action('admin_menu', function () {
         remove_menu_page('users.php');
         remove_menu_page('plugins.php');
         remove_menu_page('themes.php');
-
-        // plugin
         remove_menu_page('customtaxorder');
     }
-    remove_menu_page('index.php');
-    remove_menu_page('edit.php');
-    remove_menu_page('link-manager.php');
+    // remove_menu_page('edit.php');
+    // remove_menu_page('link-manager.php');
     remove_menu_page('edit-comments.php');
 });
 

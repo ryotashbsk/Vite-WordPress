@@ -1,11 +1,12 @@
 {
+  "include": ["src/**/*"],
+  "outDir": "./dist",
+  "exclude": ["node_modules", "dist"],
   "compilerOptions": {
-    "target": "ES6",
-    "allowSyntheticDefaultImports": false,
-    "baseUrl": "./",
-    "paths": {
-      "@/*": ["src/scripts/*"]
-    }
-  },
-  "exclude": ["node_modules", "dist"]
+    "strict": true,
+    "target": "ES2022",
+    "module": "ESNext",
+    "incremental": true,
+    "moduleResolution": "Bundler"
+  }
 }

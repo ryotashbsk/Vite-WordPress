@@ -1,5 +1,4 @@
-const files = import.meta.globEager('./*.js');
-
+const files = import.meta.glob('./*.js', { eager: true });
 const modules = new Map();
 for (const key in files) {
   const name = key.replace(/(\.\/|\.js)/g, '');

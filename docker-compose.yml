@@ -1,8 +1,6 @@
-version: '3'
-
 services:
   wp:
-    container_name: vite-wp-web
+    container_name: vite-wordpress-web
     build: ./docker/wp
     depends_on:
       - mysql
@@ -11,7 +9,7 @@ services:
     working_dir: /var/www/html/
     volumes:
       - ./dist:/var/www/html
-      - ./shell/wp-install.sh:/tmp/wp-install.sh
+      - ./shell/setup-wp.sh:/tmp/setup-wp.sh
     environment:
       WORDPRESS_DB_HOST: mysql
       WORDPRESS_DB_NAME: localdb
@@ -19,9 +17,12 @@ services:
       WORDPRESS_DB_PASSWORD: root
       WORDPRESS_TABLE_PREFIX: wp_
       WORDPRESS_DEBUG: true
+      WORDPRESS_CONFIG_EXTRA: |
+        define('WP_POST_REVISIONS', false);
+        define('WPLANG', 'ja');
 
   mysql:
-    container_name: vite-wp-db
+    container_name: vite-wordpress-db
     platform: linux/x86_64
     image: mariadb:latest
     volumes:
@@ -32,7 +33,7 @@ services:
       MYSQL_ROOT_PASSWORD: root
 
   phpmyadmin:
-    container_name: vite-wp-phpmyadmin
+    container_name: vite-wordpress-phpmyadmin
     platform: linux/x86_64
     image: phpmyadmin:latest
     depends_on:
@@ -46,6 +47,12 @@ services:
       PMA_HOST: mysql
       PMA_USER: root
       PMA_PASSWORD: root
+
+  mailcatcher:
+    image: schickling/mailcatcher
+    ports:
+      - '1080:1080'
+      - '1025:1025'
 
 volumes:
   phpmyadmin:

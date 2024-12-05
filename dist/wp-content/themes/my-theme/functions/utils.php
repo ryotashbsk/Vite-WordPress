@@ -60,22 +60,7 @@ function get_img($path)
 {
     return esc_url(get_theme_file_uri() . '/assets/images/' . $path);
 }
-function get_movie($path)
-{
-    return esc_url(get_theme_file_uri() . '/assets/movie/' . $path);
-}
 function svg($path)
 {
     include esc_url(get_theme_file_path() . '/assets/images/' . $path);
-}
-
-
-function getDays($date)
-{
-    if ($date) {
-        $datetime = new DateTime($date);
-        $weekList = ['日', '月', '火', '水', '木', '金', '土'];
-        $w = (int)$datetime->format('w');
-        return $weekList[$w];
-    }
 }

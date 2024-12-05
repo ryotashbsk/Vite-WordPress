@@ -1,55 +1,59 @@
-import parser from 'ua-parser-js';
-const ua = parser();
-console.log(ua);
+import { UAParser } from 'ua-parser-js';
 
-export class UA {
-  static Tablet = ua.device.type == 'tablet';
-  static SP = ua.device.type == 'mobile';
-  static iOS = ua.os.name == 'iOS';
-  static Android = ua.os.name == 'Android';
-  static Windows = ua.os.name == 'Windows';
-  static IE = ua.browser.name == 'IE';
-  static Edge = ua.browser.name == 'Edge';
-  static Chrome = ua.browser.name == 'Chrome';
-  static Firefox = ua.browser.name == 'Firefox';
-  static Safari = ua.browser.name == 'Safari' || ua.browser.name == 'Mobile Safari';
+const uap = new UAParser();
+const result = uap.getResult();
 
-  static set() {
-    const datas = [
-      {
-        ua: !this.Tablet && !this.SP,
-        class: 'ua-pc'
-      },
-      {
-        ua: this.Tablet,
-        class: 'ua-tablet'
-      },
-      {
-        ua: this.SP,
-        class: 'ua-sp'
-      },
-      {
-        ua: this.Android,
-        class: 'ua-android'
-      },
-      {
-        ua: this.IE,
-        class: 'ua-ie'
-      },
-      {
-        ua: this.Windows,
-        class: 'ua-windows'
-      },
-      {
-        ua: this.Safari,
-        class: 'ua-safari'
-      },
-      {
-        ua: this.iOS,
-        class: 'ua-ios'
-      }
-    ];
+export const ua = {
+  pc: result.device.type !== 'tablet' && result.device.type !== 'mobile',
+  tablet: result.device.type === 'tablet',
+  sp: result.device.type === 'mobile',
+  ios: result.os.name === 'iOS',
+  android: result.os.name === 'Android',
+  windows: result.os.name === 'Windows',
+  ie: result.browser.name === 'IE',
+  edge: result.browser.name === 'Edge',
+  chrome: result.browser.name === 'Chrome',
+  firefox: result.browser.name === 'Firefox',
+  safari: result.browser.name === 'Safari' || result.browser.name === 'Mobile Safari'
+};
 
-    datas.map((v) => v.ua && document.body.classList.add(v.class));
-  }
+export function setUA() {
+  [
+    {
+      ua: ua.pc,
+      class: 'ua-pc'
+    },
+    {
+      ua: ua.tablet,
+      class: 'ua-tablet'
+    },
+    {
+      ua: ua.sp,
+      class: 'ua-sp'
+    },
+    {
+      ua: ua.android,
+      class: 'ua-android'
+    },
+    {
+      ua: ua.ie,
+      class: 'ua-ie'
+    },
+    {
+      ua: ua.windows,
+      class: 'ua-windows'
+    },
+    {
+      ua: ua.safari,
+      class: 'ua-safari'
+    },
+    {
+      ua: ua.ios,
+      class: 'ua-ios'
+    }
+  ].forEach((item) => {
+    if (item.ua) {
+      document.documentElement.classList.add(item.class);
+    }
+  });
 }

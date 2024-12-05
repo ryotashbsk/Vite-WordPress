@@ -1,13 +1,15 @@
 #!/bin/bash
 
 # Core Setup
-wp core install \
---url='http://localhost' \
---title='SITENAME' \
---admin_user='admin' \
---admin_password='password' \
---admin_email='dev@example.com' \
---allow-root
+# wp core update --allow-root
+
+# wp core install \
+# --url='http://localhost' \
+# --title='SITE_NAME' \
+# --admin_user='admin' \
+# --admin_password='password' \
+# --admin_email='dev@example.com' \
+# --allow-root
 
 # Localization to Japanese
 wp language core install ja --activate --allow-root
@@ -26,12 +28,8 @@ wp plugin delete akismet --allow-root
 
 # Install and activate necessary plugins
 wp plugin install wp-multibyte-patch --activate --allow-root
-wp plugin install advanced-custom-fields --activate --allow-root
-
-# Delete default themes
-wp theme delete twentytwentythree --allow-root
-wp theme delete twentytwentytwo --allow-root
-wp theme delete twentytwentyone --allow-root
+wp plugin install classic-editor --activate --allow-root
+wp plugin update --all --allow-root
 
 # Activate a custom theme named 'my-theme'
 wp theme activate my-theme --allow-root

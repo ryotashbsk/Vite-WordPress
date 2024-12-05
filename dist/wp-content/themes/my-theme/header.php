@@ -29,11 +29,9 @@
     </nav>
 	</header>
 
-	<div data-barba="wrapper" class="wrapper">
+	<div class="wrapper">
 		<div 
       class="app"
-      data-barba="container"
-      data-barba-namespace="<?php data_route(); ?>"
       data-route="<?php data_route(); ?>"
     >
     

@@ -1,53 +1,68 @@
-@use './variable' as var;
+@use 'sass:map';
+@use './variable' as *;
 
+/*
+ * メディアクエリ
+ */
 $breakpoints: (
-  'mobile': 600,
-  'tablet': 834,
-  'desktop': var.$pc-width
+  'sm': 640,
+  'md': 768,
+  '900': 900,
+  'lg': 1024,
+  'xl': 1280,
+  'xxl': 1440,
+  'xxxl': 1920
 ) !default;
 
 @mixin mq($mq, $bp1: tablet, $bp2: desktop) {
-  $w1: map-get($breakpoints, $bp1);
-  $w2: map-get($breakpoints, $bp2);
+  $w1: map.get($breakpoints, $bp1);
+  $w2: map.get($breakpoints, $bp2);
   $min1: 'min-width: #{convert-em($w1, 1)}';
   $min2: 'min-width: #{convert-em($w1, 1)}';
   $max1: 'max-width: #{convert-em($w1)}';
   $max2: 'max-width: #{convert-em($w2)}';
 
-  @if $mq==min {
+  // min
+  @if $mq == min {
     @media ($min1) {
       @content;
     }
-  } @else if $mq==max {
+  }
+
+  // max
+  @else if $mq == max {
     @media ($max1) {
       @content;
     }
-  } @else if $mq==min-max {
+  }
+
+  // min-max
+  @else if $mq == min-max {
     @media ($min2) and ($max2) {
       @content;
     }
   }
 }
 
-/*
- * pxからemに変換
- */
-
 @function convert-em($width, $ge: 0) {
   $result: $width + $ge;
+
   @return '#{calc($result * 0.0625)}em';
 }
 
 /*
- * 汎用計算用関数
+ * functions
  */
-
 @function vw_pc($size) {
-  @return calc($size / var.$pc-width) * 100vw;
+  @return calc(calc($size / var(--width-pc)) * 100vw);
+}
+
+@function vh_pc($size) {
+  @return calc(calc($size / var(--height-pc)) * 100vh);
 }
 
 @function vw_sp($size) {
-  @return calc($size / var.$sp-width) * 100vw;
+  @return calc(calc($size / var(--width-sp)) * 100vw);
 }
 
 @function per($size, $base) {
@@ -62,56 +77,34 @@ $breakpoints: (
   @return max(vw_pc($size), $size * 1px);
 }
 
-@function em($size, $base: var.$font-size-pc) {
-  @return calc($size / $base) * 1em;
+@function min_vw_sp($size) {
+  @return min(vw_sp($size), $size * 1px);
 }
 
-@function rem($size) {
-  @return calc($size / var.$font-size-pc) * 1rem;
+@function min_vh_pc($size) {
+  @return min(vh_pc($size), $size * 1px);
 }
 
-/*
- * line-height-crop
- */
-
-@mixin line-height-crop($line-height) {
-  line-height: $line-height;
-
-  &::before {
-    display: block;
-    width: 0;
-    height: 0;
-    margin-top: calc((1 - #{$line-height}) * 0.5em);
-    content: '';
-    position: relative;
-    z-index: -1;
-  }
-  &::after {
-    display: block;
-    width: 0;
-    height: 0;
-    margin-bottom: calc((1 - #{$line-height}) * 0.5em);
-    content: '';
-    position: relative;
-    z-index: -1;
-  }
+@function px($size) {
+  @return calc($size * 1px);
 }
 
 /*
  * hover有効時
  */
-
 @mixin hover() {
-  @media (hover: hover) {
-    &:where(:any-link, :enabled, summary):hover {
+  @media (any-hover: hover) {
+    &:where(:any-link, :enabled, summary):hover,
+    &:where(:any-link, :enabled, summary):focus-visible {
       @content;
     }
   }
 }
 
 @mixin group-hover {
-  @media (hover: hover) {
-    &:is(:where(:any-link, :enabled, summary):hover *) {
+  @media (any-hover: hover) {
+    &:is(:where(:any-link, :enabled, summary):hover *),
+    &:is(:where(:any-link, :enabled, summary):focus-visible *) {
       @content;
     }
   }
@@ -120,19 +113,47 @@ $breakpoints: (
 /*
  * 行数制限
  */
-
 @mixin line-clamp($row) {
   display: -webkit-box;
-  -webkit-line-clamp: $row;
-  -webkit-box-orient: vertical;
   overflow: hidden;
+  -webkit-line-clamp: $row;
+  -webkit-box-orient: block-axis;
 }
 
 /*
- * 疑似要素
+ * ハーフ・レディングの打ち消し
  */
+@mixin leading-trim($line-height) {
+  line-height: $line-height;
 
-@mixin pseudo {
-  display: block;
-  content: '';
+  &::before,
+  &::after {
+    display: block flow;
+    inline-size: 0;
+    block-size: 1px;
+    content: '';
+  }
+
+  &::before {
+    margin-block-end: var(--leading-trim);
+  }
+
+  &::after {
+    margin-block-start: var(--leading-trim);
+  }
+}
+
+/*
+ * lang
+ */
+@mixin isJA() {
+  :global([lang='ja']) {
+    @content;
+  }
+}
+
+@mixin isEN() {
+  :global([lang='en']) {
+    @content;
+  }
 }

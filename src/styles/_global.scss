@@ -1,158 +1,111 @@
 @use 'import' as *;
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+@layer reset, components, utils;
 
-  .preload & {
-    transition: none !important;
-  }
-}
+@layer reset {
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+    min-inline-size: 0;
+    padding: 0;
+    margin: 0;
 
-*:focus {
-  outline: none;
-}
-
-html,
-body {
-  margin: 0;
-}
-
-html {
-  font-size: vw_sp($font-size-sp);
-
-  @include mq('min', 'mobile') {
-    font-size: $font-size-pc * 1px;
-  }
-}
-
-body {
-  width: 100%;
-  height: 100%;
-  color: $black;
-  font-size: 1rem;
-  font-family: $base-font;
-  font-weight: 500;
-  line-height: 1;
-  text-align: left;
-  line-break: normal;
-  letter-spacing: 0;
-  word-break: break-word;
-  text-size-adjust: 100%;
-  font-feature-settings: 'palt' 1;
-  line-break: strict;
-  hanging-punctuation: allow-end;
-  -ms-overflow-style: none;
-  -webkit-font-smoothing: antialiased;
-  -ms-overflow-style: none;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5 {
-  font-weight: 500;
-}
-
-article,
-aside,
-details,
-figcaption,
-figure,
-picture,
-footer,
-header,
-main,
-menu,
-nav,
-section,
-summary,
-address {
-  display: block;
-}
-
-audio,
-canvas,
-progress,
-video {
-  display: inline-block;
-  vertical-align: baseline;
-}
-
-ul,
-ol {
-  list-style: none;
-  list-style-type: none;
-  list-style-position: inside;
-  list-style-image: none;
-}
-
-img {
-  max-width: 100%;
-  vertical-align: middle;
-  color: transparent;
-}
-
-a {
-  color: $black;
-  text-decoration: none;
-}
-
-b,
-strong,
-em {
-  font-weight: 500;
-  font-style: normal;
-}
-
-small {
-  font-size: 80%;
-}
-
-table {
-  width: 100%;
-  border-collapse: collapse;
-  border-spacing: 0;
-}
-
-td,
-th {
-  font-weight: normal;
-  padding: 0;
-  vertical-align: top;
-  text-align: left;
-}
-
-svg {
-  display: block;
-  width: 100%;
-}
-
-button {
-  cursor: pointer;
-  font-family: inherit;
-}
-
-p {
-  @include hover() {
-    a:hover {
-      text-decoration: underline;
+    .preload & {
+      transition: none !important;
     }
   }
-}
 
-p:not([class]) {
-  + p:not([class]) {
-    margin-top: 1.5em;
+  :where(:root) {
+    font-family: var(--font-family);
+    font-size: var(--font-size);
+    font-weight: var(--font-weight);
+    font-feature-settings: 'palt' 1;
+    line-height: var(--line-height);
+    color: var(--color-green);
+    text-align: start;
+    letter-spacing: var(--letter-spacing);
+    word-break: normal;
+    overflow-wrap: anywhere;
+    touch-action: manipulation;
+    // scroll-padding-block-start: var(--scroll-padding-block-start);
+    background-color: #fff;
+    text-size-adjust: 100%;
+    -webkit-font-smoothing: antialiased;
+    line-break: strict;
+
+    --font-family: helvetica, 'Helvetica Neue', sans-serif;
+    --font-weight: 400;
+    --line-height: 1.5;
+    --color-black: #000;
+    --width-pc: 1440;
+    --height-pc: 1024;
+    --width-sp: 390;
+    --letter-spacing: 0.05em;
+    --leading-trim: calc((1cap - 1lh) / 2);
   }
-}
 
-input,
-select,
-textarea {
-  font-family: $base-font;
-  font-weight: 400;
+  :where(body) {
+    min-block-size: 100svb;
+    overflow-y: scroll;
+  }
+
+  :where(h1, h2, h3, h4) {
+    letter-spacing: 0;
+  }
+
+  :where(ul, ol) {
+    list-style: '' outside none;
+  }
+
+  :where(:any-link) {
+    color: unset;
+    text-decoration-line: none;
+    text-decoration-thickness: from-font;
+    text-underline-offset: 0.25em;
+    background-color: unset;
+  }
+
+  :where(table) {
+    inline-size: 100%;
+    border-spacing: 0;
+    border-collapse: collapse;
+  }
+
+  :where(td, th) {
+    text-align: start;
+    vertical-align: top;
+  }
+
+  :where(svg, video, canvas, audio, iframe, embed, object, picture) {
+    display: block;
+  }
+
+  :where(img) {
+    max-inline-size: 100%;
+    block-size: auto;
+    color: transparent;
+    vertical-align: middle;
+    pointer-events: none;
+    user-select: none;
+  }
+
+  :where(button, input, select, textarea),
+  ::file-selector-button {
+    font-family: unset;
+    font-feature-settings: unset;
+    color: unset;
+    text-align: unset;
+    text-transform: unset;
+    letter-spacing: unset;
+    vertical-align: middle;
+    background-color: unset;
+    border-color: transparent;
+    border-width: 0;
+    border-radius: unset;
+  }
+
+  :where(button) {
+    cursor: pointer;
+  }
 }

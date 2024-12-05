@@ -1,7 +1,7 @@
 #!/bin/bash
 
 sql_file="./docker/mysql/initdb.sql"
-container_name="vite-wp-db"
+container_name="vite-wordpress-db"
 docker_command="docker exec -i $container_name sh -c"
 import_command="mariadb -u root -proot localdb"
 
