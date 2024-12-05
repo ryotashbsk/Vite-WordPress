@@ -4,9 +4,8 @@
  * 投稿メニューのラベル変更
  */
 $post_label = ADMIN_POST_MENU_LABEL;
-if ($post_label) {
-    add_filter('post_type_labels_post', function ($labels) {
-        global $post_label;
+if (!empty($post_label)) {
+    add_filter('post_type_labels_post', function ($labels) use ($post_label) {
         foreach ($labels as $key => $value) {
             $labels->$key = str_replace('投稿', $post_label, $value);
         }
@@ -19,9 +18,8 @@ if ($post_label) {
  * 固定ページメニューのラベル変更
  */
 $page_label = ADMIN_PAGE_MENU_LABEL;
-if ($page_label) {
-    add_filter('post_type_labels_page', function ($labels) {
-        global $page_label;
+if (!empty($page_label)) {
+    add_filter('post_type_labels_page', function ($labels) use ($page_label) {
         foreach ($labels as $key => $value) {
             $labels->$key = str_replace('固定ページ', $page_label, $value);
         }

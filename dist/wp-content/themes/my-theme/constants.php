@@ -1,9 +1,5 @@
 <?php
 
-/**
- * Config
- */
-
 const DEBUG = 1;
 
 const WP_CORE_AUTO_UPDATE = true;
@@ -19,7 +15,6 @@ const CUSTOM_POST_TYPE = [
 ];
 
 const ARCHIVE_PER_PAGE = 6;
-
 
 const NAV_ITEMS = [
   [

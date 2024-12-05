@@ -33,10 +33,8 @@ remove_action('wp_head', 'wp_oembed_add_host_js');
 remove_action('welcome_panel', 'wp_welcome_panel');
 remove_filter('pre_user_description', 'wp_filter_kses');
 remove_filter('pre_oembed_result', 'wp_filter_pre_oembed_result');
-// remove_filter('the_content', 'wpautop');
 add_theme_support('menus');
 add_filter('wp_calculate_image_srcset', '__return_false');
-add_filter('use_block_editor_for_post', '__return_false');
 add_filter('wp_sitemaps_enabled', '__return_false');
 add_filter('show_admin_bar', '__return_false');
 
@@ -46,14 +44,6 @@ add_filter('show_admin_bar', '__return_false');
  */
 add_action('wp_enqueue_scripts', function () {
     wp_dequeue_style('global-styles');
-});
-
-
-/**
- * wp-block-libraryの無効化
- */
-add_action('wp_enqueue_scripts', function () {
-    wp_dequeue_style('wp-block-library');
 });
 
 

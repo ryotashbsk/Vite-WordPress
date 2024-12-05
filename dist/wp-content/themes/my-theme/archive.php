@@ -4,7 +4,7 @@ $post_type = get_query_var('post_type');
 ?>
 
 <header class="pageHeader">
-  <h1 class="pageHeader-title"><?php echo $post_type; ?></h1>
+  <h1 class="pageHeader-title"><?= $post_type; ?></h1>
 </header>
 
 <?php

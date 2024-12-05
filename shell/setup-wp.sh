@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Core Setup
-# wp core update --allow-root
+wp core update --allow-root
 
 # wp core install \
 # --url='http://localhost' \
@@ -33,6 +33,10 @@ wp plugin update --all --allow-root
 
 # Activate a custom theme named 'my-theme'
 wp theme activate my-theme --allow-root
+
+# Delete default themes
+wp theme delete twentytwentyfour --allow-root
+wp theme delete twentytwentyfive --allow-root
 
 # Update permalinks
 wp option update permalink_structure /%category%/%postname%/ --allow-root

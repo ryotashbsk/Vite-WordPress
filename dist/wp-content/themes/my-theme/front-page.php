@@ -6,7 +6,7 @@ get_header();
   <ul class="postList">
     <?php
       $news_posts = get_posts([
-        'post_type'      => 'news',
+        'post_type'      => 'post',
         'posts_per_page' => 3,
         'orderby'        => [
           'meta_value_num' => 'DESC',

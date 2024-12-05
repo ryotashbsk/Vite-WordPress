@@ -1,1 +1,19 @@
 @use '../import' as *;
+
+.header {
+  display: grid;
+  gap: 10px;
+  padding: 30px;
+  text-align: center;
+  background-color: #eee;
+
+  a {
+    text-decoration: underline;
+  }
+}
+
+.header-nav-list {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
