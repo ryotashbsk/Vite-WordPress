@@ -3,7 +3,7 @@
 sql_file="./docker/mysql/initdb.sql"
 container_name="vite-wordpress-db"
 docker_command="docker exec -i $container_name sh -c"
-import_command="mariadb -u root -proot localdb"
+import_command="mysql -u root -proot localdb"
 
 if [ -f "$sql_file" ]; then
     if $docker_command "$import_command" < "$sql_file"; then
