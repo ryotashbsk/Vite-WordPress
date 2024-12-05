@@ -42,9 +42,6 @@ importers:
       eslint-plugin-unused-imports:
         specifier: 4.1.4
         version: 4.1.4(eslint@9.16.0)
-      glob:
-        specifier: 11.0.0
-        version: 11.0.0
       globals:
         specifier: 15.13.0
         version: 15.13.0

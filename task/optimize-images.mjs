@@ -8,8 +8,12 @@ import imageminGifsicle from 'imagemin-gifsicle';
 import imageminSvgo from 'imagemin-svgo';
 const constants = JSON.parse(await fs.readFile(path.resolve('constants.json')));
 
-const inputDir = `src/images`; // 入力フォルダ
-const outputDir = `${constants.outputPath}../images`; // 出力フォルダ
+const inputDir = `src/img`; // 入力フォルダ
+const outputDir = `${constants.outputPath}../img`; // 出力フォルダ
+
+// コマンドライン引数を取得
+const args = process.argv.slice(2);
+const isPersistent = !args.includes('--no-watch'); // --no-persistent 引数が無ければ persistent: true とする
 
 // 文字色
 const green = '\u001b[32m';
@@ -20,7 +24,7 @@ const reset = '\u001b[0m';
 // 監視用のchokidar watcher
 const watcher = chokidar.watch(inputDir, {
   ignored: /(^|[\/\\])\../, // ドットで始まるファイルを除外（隠しファイル）
-  persistent: true
+  persistent: isPersistent
 });
 
 // 画像圧縮処理
@@ -29,7 +33,6 @@ const compressImage = async (filePath) => {
     const relativePath = path.relative(inputDir, filePath); // 入力パスから相対パスを取得
     const outputFilePath = path.join(outputDir, relativePath); // 出力先ファイルのパス
     const outputDirPath = path.dirname(outputFilePath); // 出力先ディレクトリ
-    console.log('🚀 ~ compressImage ~ outputDirPath:', outputDirPath);
 
     // 出力先ディレクトリがない場合は作成
     try {
