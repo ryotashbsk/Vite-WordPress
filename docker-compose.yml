@@ -49,6 +49,7 @@ services:
       PMA_PASSWORD: root
 
   mailcatcher:
+    container_name: vite-wordpress-mail
     image: schickling/mailcatcher
     ports:
       - '1080:1080'

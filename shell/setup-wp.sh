@@ -37,6 +37,9 @@ wp theme activate my-theme --allow-root
 # Delete default themes
 wp theme delete twentytwentyfour --allow-root
 wp theme delete twentytwentyfive --allow-root
+wp theme delete twentytwentythree --allow-root
+wp theme delete twentytwentytwo --allow-root
+wp theme delete twentytwentyone --allow-root
 
 # Update permalinks
 wp option update permalink_structure /%category%/%postname%/ --allow-root

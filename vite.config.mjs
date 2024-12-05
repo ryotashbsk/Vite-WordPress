@@ -60,11 +60,6 @@ export default defineConfig({
       }
     }
   },
-	
-	
-  resolve: {
-    alias: [{ find: '@/', replacement: '/src/scripts/' }]
-  },
 
   // プラグイン
   plugins: [sassGlobImports(), liveReload([__dirname + '/dist/**/*.php'])]

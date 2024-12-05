@@ -4,14 +4,16 @@
   "private": true,
   "version": "0.0.0",
   "scripts": {
-    "dev": "concurrently --raw \"node task/clean.mjs\" \"vite\"",
+    "dev": "node task/clean.mjs && vite",
     "build": "vite build",
+    "preview": "vite preview",
     "lint:eslint": "eslint \"./src/**/*.js\" --fix",
     "lint:stylelint": "stylelint \"./src/**/*.scss\" --fix",
     "optimize-images": "node task/optimize-images.mjs",
     "docker:init": "docker compose up -d --build",
     "docker:start": "docker compose up -d",
     "docker:stop": "docker stop $(docker ps -q) ",
+    "docker:delete": "docker compose down -v",
     "shell:setup-wp": "docker exec -it vite-wordpress-web /bin/bash -c \"/tmp/setup-wp.sh\"",
     "shell:export-wp-db": "bash shell/export-wp-db.sh",
     "shell:import-wp-db": "bash shell/import-wp-db.sh"
