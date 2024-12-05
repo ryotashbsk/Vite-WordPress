@@ -4,9 +4,10 @@
   "private": true,
   "version": "0.0.0",
   "scripts": {
-    "dev": "node task/clean.mjs && npm run optimize-images:watch && vite",
+    "dev": "concurrently \"npm run clean\" \"npm run optimize-images:watch\" \"vite\"",
     "build": "npm run optimize-images:no-watch && vite build",
     "preview": "vite preview",
+    "clean": "node task/clean.mjs",
     "optimize-images:watch": "node task/optimize-images.mjs",
     "optimize-images:no-watch": "node task/optimize-images.mjs --no-watch",
     "lint:eslint": "eslint \"./src/**/*.js\" --fix",
