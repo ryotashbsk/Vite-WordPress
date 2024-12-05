@@ -15,7 +15,7 @@
 | **`shell:export-wp-db`** | ローカルDBエクスポート（./docker/mysql/initdb.sqlに出力） |
 | **`shell:import-wp-db`** | ローカルDBインポート                                      |
 | **`shell:setup-wp`**     | WordPressのセットアップ                                   |
-| **`zip-theme`**          | WordPressテーマのzip圧縮（リポジトのリルートに出力）      |
+| **`zip-theme`**          | WordPressテーマのzip圧縮（リポジトリのルートに出力）      |
 
 #### ローカル環境 URL
 
