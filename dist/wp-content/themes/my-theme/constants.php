@@ -1,6 +1,6 @@
 <?php
 
-const COMPRESS_HTML = 1;
+const COMPRESS_HTML = 0;
 
 const WP_CORE_AUTO_UPDATE = true;
 
