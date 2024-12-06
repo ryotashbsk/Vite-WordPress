@@ -13,10 +13,10 @@ add_filter('pre_get_document_title', function ($title) {
         $en_page = get_page_by_path('en', OBJECT, 'page');
         $site_name = get_field('title', $en_page->ID) ?? get_bloginfo('name');
 
-        if (is_singular('works-en')) {
+        if (is_singular('news-en')) {
             return get_the_title() .  ' | ' .  'Works' . '｜' . $site_name;
-        } elseif (is_archive('works-en')) {
-            return 'Works' . '｜' . $site_name;
+        } elseif (is_archive('news-en')) {
+            return 'News' . '｜' . $site_name;
         } elseif (is_page()) {
             return str_replace('(en)', '', get_the_title()) .  ' | ' .  $site_name;
         }

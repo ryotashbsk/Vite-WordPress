@@ -1,9 +1,14 @@
 <?php if (COMPRESS_HTML) {
     ob_start('compress_output');
 } ?><!DOCTYPE html>
-<html <?php language_attributes(); ?> data-route="<?php data_route(); ?>">
-<head>
 
+<?php
+$current_path = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
+$isEN = strpos($current_path, '/en/') === 0;
+?>
+
+<html lang="<?= $isEN ? 'en' : 'ja'; ?>" data-route="<?php data_route(); ?>">
+<head>
 <meta charset="<?php bloginfo('charset'); ?>">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <meta http-equiv="content-language" content="<?= get_locale(); ?>">
@@ -13,7 +18,6 @@
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="<?= get_bloginfo('name'); ?>">
-
 <?php wp_head(); ?>
 </head>
 
