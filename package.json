@@ -10,6 +10,7 @@
     "clean": "node task/clean.mjs",
     "optimize-images:watch": "node task/optimize-images.mjs",
     "optimize-images:no-watch": "node task/optimize-images.mjs --no-watch",
+    "format": "prettier --write ./src",
     "lint:eslint": "eslint \"./src/**/*.js\" --fix",
     "lint:stylelint": "stylelint \"./src/**/*.scss\" --fix",
     "docker:init": "docker compose up -d --build",

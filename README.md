@@ -7,6 +7,7 @@
 | **`dev`**                | フロントエンド起動                                        |
 | **`build`**              | フロントエンドビルド                                      |
 | **`optimize-images`**    | 画像の差分監視&圧縮                                       |
+| **`format`**             | prettierによるソースのフォーマット                        |
 | **`lint:stylelint`**     | scss/cssのリンター実行                                    |
 | **`docker:init`**        | Docker初期化                                              |
 | **`docker:start`**       | Docker起動                                                |
