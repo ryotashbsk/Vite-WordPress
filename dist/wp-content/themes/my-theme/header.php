@@ -1,4 +1,4 @@
-<?php if (COMPRESS_HTML) {
+<?php if (defined('COMPRESS_HTML') && COMPRESS_HTML) {
     ob_start('compress_output');
 } ?><!DOCTYPE html>
 

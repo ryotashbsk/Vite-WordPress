@@ -42,11 +42,14 @@ function register_cpt($cpt, $label, $rewrite_slug, $taxonomy)
         );
     }
 }
-add_action('init', function () {
-    foreach (CUSTOM_POST_TYPE as $data) {
-        register_cpt($data['type'], $data['label'], $data['rewrite_slug'], $data['taxonomy']);
-    }
-});
+
+if (defined('CUSTOM_POST_TYPE')) {
+    add_action('init', function () {
+        foreach (CUSTOM_POST_TYPE as $data) {
+            register_cpt($data['type'], $data['label'], $data['rewrite_slug'], $data['taxonomy']);
+        }
+    });
+}
 
 /**
  * Enable revision in custom post type

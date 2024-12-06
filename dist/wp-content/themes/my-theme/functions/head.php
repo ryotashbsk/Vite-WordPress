@@ -133,7 +133,7 @@ add_action('wp_head', function () {
         esc_url(get_theme_file_uri() . '/assets/img/favicon/favicon-32x32.png')
     ) . "\n";
 
-    if (GOOGLE_FONTS) {
+    if (defined('GOOGLE_FONTS') && GOOGLE_FONTS) {
         echo sprintf(
             '<link rel="preconnect" href="%s">',
             esc_url('https://fonts.googleapis.com')
@@ -146,31 +146,31 @@ add_action('wp_head', function () {
     
         echo sprintf(
             '<link rel="stylesheet" href="%s">',
-            esc_url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap')
+            esc_url(GOOGLE_FONTS)
         ) . "\n";
     }
     
-    if (TYPEKIT) {
+    if (defined('TYPEKIT') && TYPEKIT) {
         echo sprintf(
             '<link rel="stylesheet" href="%s">',
             esc_url(TYPEKIT)
         ) . "\n";
     }
   
-    if (isset($manifest['src/js/main.js'])) {
+    if (isset($manifest['src/scripts/main.js'])) {
         echo sprintf(
             '<link rel="stylesheet" href="%s">',
-            esc_url(get_theme_file_uri() . '/assets/build/' . $manifest['src/js/main.js']['css'][0])
+            esc_url(get_theme_file_uri() . '/assets/build/' . $manifest['src/scripts/main.js']['css'][0])
         ) . "\n";
     
         echo sprintf(
             '<script type="module" src="%s"></script>',
-            esc_url(get_theme_file_uri() . '/assets/build/' . $manifest['src/js/main.js']['file'])
+            esc_url(get_theme_file_uri() . '/assets/build/' . $manifest['src/scripts/main.js']['file'])
         ) . "\n";
     } else {
         echo sprintf(
             '<script type="module" src="%s"></script>',
-            'http://localhost:5173/src/js/main.js'
+            'http://localhost:5173/src/scripts/main.js'
         ) . "\n";
     }
 });

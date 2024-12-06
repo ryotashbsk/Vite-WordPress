@@ -3,10 +3,10 @@
 /**
  *　自動アップデートの設定
  */
-if (WP_CORE_AUTO_UPDATE !== false) {
+if (defined('WP_CORE_AUTO_UPDATE') && WP_CORE_AUTO_UPDATE !== false) {
     add_filter('allow_major_auto_core_updates', '__return_true');
 }
-if (WP_PLUGIN_AUTO_UPDATE !== false) {
+if (defined('WP_PLUGIN_AUTO_UPDATE') && WP_PLUGIN_AUTO_UPDATE !== false) {
     add_filter('auto_update_plugin', '__return_true');
 }
 
@@ -107,7 +107,7 @@ add_action('pre_get_posts', function ($query) {
     }
 
     if (is_post_type_archive('news')) {
-        $query->set('posts_per_page', ARCHIVE_PER_PAGE);
+        $query->set('posts_per_page', defined('ARCHIVE_PER_PAGE') ? ARCHIVE_PER_PAGE : 10);
         $query->set('orderby', 'menu_order');
         $query->set('order', 'ASC');
     }
