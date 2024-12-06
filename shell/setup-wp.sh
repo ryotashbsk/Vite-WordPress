@@ -29,6 +29,8 @@ wp plugin delete akismet --allow-root
 # Install and activate necessary plugins
 wp plugin install wp-multibyte-patch --activate --allow-root
 wp plugin install classic-editor --activate --allow-root
+wp plugin install advanced-custom-field --activate --allow-root
+wp plugin install duplicate-post --activate --allow-root
 wp plugin update --all --allow-root
 
 # Activate a custom theme named 'my-theme'

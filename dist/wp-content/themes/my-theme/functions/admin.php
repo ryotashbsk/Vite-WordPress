@@ -1,33 +1,4 @@
 <?php
-
-/**
- * 投稿メニューのラベル変更
- */
-$post_label = ADMIN_POST_MENU_LABEL;
-if (!empty($post_label)) {
-    add_filter('post_type_labels_post', function ($labels) use ($post_label) {
-        foreach ($labels as $key => $value) {
-            $labels->$key = str_replace('投稿', $post_label, $value);
-        }
-        return $labels;
-    });
-}
-
-
-/**
- * 固定ページメニューのラベル変更
- */
-$page_label = ADMIN_PAGE_MENU_LABEL;
-if (!empty($page_label)) {
-    add_filter('post_type_labels_page', function ($labels) use ($page_label) {
-        foreach ($labels as $key => $value) {
-            $labels->$key = str_replace('固定ページ', $page_label, $value);
-        }
-        return $labels;
-    });
-}
-
-
 /**
  * タグ機能の無効化
  */
@@ -58,7 +29,7 @@ add_action('admin_menu', function () {
         remove_menu_page('themes.php');
         remove_menu_page('customtaxorder');
     }
-    // remove_menu_page('edit.php');
+    remove_menu_page('edit.php');
     // remove_menu_page('link-manager.php');
     remove_menu_page('edit-comments.php');
 });
@@ -151,13 +122,12 @@ add_action('admin_print_styles', function () {
 });
 
 
-// categoryの階層
+// categoryの階層表示を固定
 add_action('wp_terms_checklist_args', function ($args, $post_id) {
-    if ($args['checked_ontop'] !== false) {
-        $args['checked_ontop'] = false;
-    }
+    $args['checked_ontop'] = false;
     return $args;
 }, 10, 2);
+
 
 
 /**

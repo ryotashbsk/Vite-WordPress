@@ -3,38 +3,71 @@
 // title
 add_theme_support('title-tag');
 
+add_filter('pre_get_document_title', function ($title) {
+    global $post;
+    $current_path = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
+    $isEN = strpos($current_path, '/en/') === 0;
+
+    if ($isEN) {
+        // /en/のタイトルをsite_nameとして利用
+        $en_page = get_page_by_path('en', OBJECT, 'page');
+        $site_name = get_field('title', $en_page->ID) ?? get_bloginfo('name');
+
+        if (is_singular('works-en')) {
+            return get_the_title() .  ' | ' .  'Works' . '｜' . $site_name;
+        } elseif (is_archive('works-en')) {
+            return 'Works' . '｜' . $site_name;
+        } elseif (is_page()) {
+            return str_replace('(en)', '', get_the_title()) .  ' | ' .  $site_name;
+        }
+    }
+    
+    if (is_page() && get_field('title')) {
+        return esc_html(get_field('title'));
+    }
+
+    // それ以外はデフォルトのタイトルを使用
+    return $title;
+});
+
+
 
 add_action('wp_head', function () {
     // base
-    global $post;
+    global $post, $wp;
+    $current_path = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
+    $isEN = strpos($current_path, '/en/') === 0;
+
+    // title
     $title = wp_get_document_title();
     $title = strip_tags($title);
     $title = str_replace(PHP_EOL, '', $title);
     $title = esc_html($title);
-    $site_name = get_bloginfo('name');
-    $description = get_field('meta_description') ? get_field('meta_description'): get_bloginfo('description');
-    $excerpt = '';
-  
-    if (is_single()) {
-        $contents = get_field('contents');
-        if ($contents) {
-            foreach ($contents as $content) {
-                if ($content['acf_fc_layout'] === 'layout_text') {
-                    $excerpt = $content['text'];
-                }
-            }
-            $excerpt = str_replace(array("\r\n","\r","\n","&nbsp;"), '', $excerpt);
-            $excerpt = wp_strip_all_tags($excerpt);
-            $excerpt = preg_replace('/\[.*\]/', '', $excerpt);
-            $excerpt = mb_strimwidth($excerpt, 0, 220, "...");
-            $description = $excerpt;
-        }
-    }
+    $title = str_replace('(en)', '', $title);
+    
+    // description
+    $description = get_field('description') ? get_field('description'): get_bloginfo('description');
     
     // canonical
     $canonical = (is_ssl() ? 'https://' : 'http://').$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
     echo sprintf('<link rel="canonical" href="%s">', esc_url($canonical)) . "\n";
 
+    // site_name
+    if ($isEN) {
+        $en_page = get_page_by_path('en', OBJECT, 'page');
+        
+        $title = get_field('title', $en_page->ID) ?? get_bloginfo('name');
+        
+        // /en/の説明文をdescriptionとして利用
+        $description = get_field('description', $en_page->ID) ? get_field('description', $en_page->ID): get_bloginfo('description');
+        
+        // /en/のタイトルをsite_nameとして利用
+        $site_name = $title;
+        
+    } else {
+        $site_name = get_bloginfo('name');
+    }
+    
     
     // og
     if (is_single()) {
@@ -47,7 +80,7 @@ add_action('wp_head', function () {
     if (is_single() && get_the_post_thumbnail_url()) {
         $image = esc_url(get_the_post_thumbnail_url());
     } else {
-        $image = esc_url(get_theme_file_uri() . '/assets/images/og.png');
+        $image = esc_url(get_theme_file_uri() . '/assets/img/ogp.png');
     }
 
     if (is_home()) {
@@ -61,6 +94,10 @@ add_action('wp_head', function () {
     $twitter_card = 'summary_large_image';
 
     foreach ([
+    ['<meta name="theme-color" content="%s">', esc_attr('#000')],
+    ['<meta name="mobile-web-app-capable" content="%s">', 'yes'],
+    ['<meta name="apple-mobile-web-app-capable" content="%s">', 'yes'],
+    ['<meta name="apple-mobile-web-app-title" content="%s">', esc_attr($site_name)],
     ['<meta name="description" content="%s">', esc_attr($description)],
     ['<meta name="twitter:card" content="%s">', esc_attr($twitter_card)],
     ['<meta property="og:title" content="%s">', esc_attr($title)],
@@ -77,44 +114,63 @@ add_action('wp_head', function () {
     // resources
     $manifest = vite_manifest();
     echo sprintf(
-        '<link rel="icon" href="%s" type="image/x-icon">',
-        esc_url(get_theme_file_uri() . '/assets/images/favicon/favicon.ico')
+        '<link rel="icon" href="%s">',
+        esc_url(get_theme_file_uri() . '/assets/img/favicon/favicon.ico')
     ) . "\n";
 
     echo sprintf(
         '<link rel="apple-touch-icon" href="%s" sizes="180x180">',
-        esc_url(get_theme_file_uri() . '/assets/images/favicon/apple-touch-icon.png')
+        esc_url(get_theme_file_uri() . '/assets/img/favicon/apple-touch-icon.png')
     ) . "\n";
 
     echo sprintf(
-        '<link rel="preconnect" href="%s">',
-        esc_url('https://fonts.googleapis.com')
+        '<link rel="apple-touch-icon" href="%s" sizes="32x32">',
+        esc_url(get_theme_file_uri() . '/assets/img/favicon/favicon-16x16.pngg')
     ) . "\n";
-    
+
     echo sprintf(
-        '<link rel="preconnect" href="%s" crossorigin>',
-        esc_url('https://fonts.gstatic.com')
+        '<link rel="apple-touch-icon" href="%s" sizes="16x16">',
+        esc_url(get_theme_file_uri() . '/assets/img/favicon/favicon-32x32.png')
     ) . "\n";
+
+    if (GOOGLE_FONTS) {
+        echo sprintf(
+            '<link rel="preconnect" href="%s">',
+            esc_url('https://fonts.googleapis.com')
+        ) . "\n";
     
-    echo sprintf(
-        '<link rel="stylesheet" href="%s">',
-        esc_url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap')
-    ) . "\n";
-  
-    if (isset($manifest['src/scripts/main.js'])) {
+        echo sprintf(
+            '<link rel="preconnect" href="%s" crossorigin>',
+            esc_url('https://fonts.gstatic.com')
+        ) . "\n";
+    
         echo sprintf(
             '<link rel="stylesheet" href="%s">',
-            esc_url(get_theme_file_uri() . '/assets/build/' . $manifest['src/scripts/main.js']['css'][0])
+            esc_url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap')
+        ) . "\n";
+    }
+    
+    if (TYPEKIT) {
+        echo sprintf(
+            '<link rel="stylesheet" href="%s">',
+            esc_url(TYPEKIT)
+        ) . "\n";
+    }
+  
+    if (isset($manifest['src/js/main.js'])) {
+        echo sprintf(
+            '<link rel="stylesheet" href="%s">',
+            esc_url(get_theme_file_uri() . '/assets/build/' . $manifest['src/js/main.js']['css'][0])
         ) . "\n";
     
         echo sprintf(
             '<script type="module" src="%s"></script>',
-            esc_url(get_theme_file_uri() . '/assets/build/' . $manifest['src/scripts/main.js']['file'])
+            esc_url(get_theme_file_uri() . '/assets/build/' . $manifest['src/js/main.js']['file'])
         ) . "\n";
     } else {
         echo sprintf(
             '<script type="module" src="%s"></script>',
-            'http://localhost:5173/src/scripts/main.js'
+            'http://localhost:5173/src/js/main.js'
         ) . "\n";
     }
 });
