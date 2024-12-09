@@ -6,6 +6,7 @@
 if (defined('WP_CORE_AUTO_UPDATE') && WP_CORE_AUTO_UPDATE !== false) {
     add_filter('allow_major_auto_core_updates', '__return_true');
 }
+
 if (defined('WP_PLUGIN_AUTO_UPDATE') && WP_PLUGIN_AUTO_UPDATE !== false) {
     add_filter('auto_update_plugin', '__return_true');
 }
