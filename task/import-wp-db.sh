@@ -6,7 +6,7 @@ docker_command="docker exec -i $container_name sh -c"
 import_command="mysql -u root -proot localdb"
 
 if [ -f "$sql_file" ]; then
-    if $docker_command "$import_command" < "$sql_file"; then
+    if $docker_command "$import_command 2> /dev/null" < "$sql_file"; then
         echo "Database import succeeded"
     else
         error_message=$($docker_command "$import_command" < "$sql_file")

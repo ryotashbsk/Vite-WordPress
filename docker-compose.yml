@@ -9,7 +9,7 @@ services:
     working_dir: /var/www/html/
     volumes:
       - ./dist:/var/www/html
-      - ./shell/setup-wp.sh:/tmp/setup-wp.sh
+      - ./task/setup-wp.sh:/tmp/setup-wp.sh
     environment:
       WORDPRESS_DB_HOST: mysql
       WORDPRESS_DB_NAME: localdb
